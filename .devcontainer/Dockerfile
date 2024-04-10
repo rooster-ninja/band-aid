@@ -15,7 +15,9 @@ ARG GITHUB_TOKEN
 RUN apt-get update \
     && apt-get install -y git curl llvm-dev libclang-dev clang unzip \
     libusb-1.0-0 libssl-dev libudev-dev pkg-config \
-    && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts
+    && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts \
+
+RUN apt-get update && apt-get install -y procps && rm -rf /var/lib/apt/lists/*
 
 # Set users
 RUN adduser --disabled-password --gecos "" ${CONTAINER_USER}
